@@ -4,8 +4,8 @@ export default {
     type: 'document',
     fields: [
         {
-            name: 'title',
-            title: 'location',
+            name: 'location',
+            title: 'Location',
             type: 'string'
         },
         {
@@ -13,7 +13,7 @@ export default {
             title: 'Slug',
             type: 'slug',
             options: {
-                source: 'title',
+                source: 'location',
                 maxLength: 96,
             },
         },

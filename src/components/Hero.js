@@ -15,13 +15,47 @@ const Overlay = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0, 0.05);
+    background-color: rgba(0,0,0, 0.1);
+`
+const HeroContainer = styled(Container)`
+    padding: 0 1rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    @media screen and (max-width: 900px){
+        align-items: center;
+        gap: 3rem;
+    }
+    h1{
+        font-family: 'Libre Baskerville', serif;
+        color: white;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 4rem;
+
+        @media screen and (max-width: 1200px){
+            font-size: clamp(2rem, 6vw, 4rem);
+        }
+        @media screen and (max-width: 900px){
+            text-align: center;
+            font-size: clamp(2rem, 7vw, 2.5rem);
+        }
+    }
+    *{
+        z-index: 2;
+    }
 `
 
 const Hero = () => {
     return (
         <StyledHero>
             <Overlay/>
+            <HeroContainer>
+            <h1><span>Invest</span> in your future.</h1>
+            <h1><span>Invest</span> with Presello.</h1>
+            </HeroContainer>
         </StyledHero>
     )
 }

@@ -1,13 +1,16 @@
 import Home from "./pages/Home";
 import {Switch, Route} from 'react-router-dom'
+import {ContextProvider} from "./context/Context"
 
 
 function App() {
   return (
     <div className="App">
+      <ContextProvider>
       <Switch>
-        <Route to='/' exact component={Home} />
+        <Route to='/home' exact component={Home} />
       </Switch>
+      </ContextProvider>
       <br/>
       <br/>
       <br/>

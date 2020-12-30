@@ -91,6 +91,7 @@ const NavList = styled.ul`
     }
     @media screen and (max-width: 500px){
         width: 100%;
+        overflow: scroll;
     }
 `
 const Hamburger = styled.div`
@@ -133,8 +134,8 @@ const StyledLink = styled.a`
     border: 2px solid #E3C77C;
     font-size: 14px;
     &:hover{
-        background-color: rgba(255, 208, 0, 0.5);
-        color: white !important;
+        background-color: rgba(227, 199, 124, 1);
+        color: black !important;
     }
     &::before{
         width: 0 !important;
@@ -171,7 +172,7 @@ const Nav = () => {
     })
     document.addEventListener('scroll', () => {
         if (navCon.current) {
-            if (window.pageYOffset >= 200){
+            if (window.pageYOffset >= 300){
                 navCon.current.classList.add("nav-scrolled")
                 navRef.current.classList.add('nav-outer-scrolled')
             } else {
