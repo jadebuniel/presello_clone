@@ -11,23 +11,7 @@ export const ContextProvider = (props) => {
     useEffect(()=> {
         const fetchData = async () => {
             const data = await  sanityClient
-            .fetch(`*[_type=="houses"]{
-                bathrooms,
-                bedrooms,
-                carparks,
-                description,
-                featured,
-                floor,
-                homefeatures,
-                images,
-                lot,
-                neighborhoodfeatures,
-                price,
-                slug,
-                title,
-                thumb,
-                location
-              }`)
+            .fetch(`*[_type=="houses"]`)
               setHouses(data)
         }
         const fetchLocation = async () => {

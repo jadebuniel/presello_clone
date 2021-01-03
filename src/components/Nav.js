@@ -204,7 +204,7 @@ const Nav = () => {
                 </LogoContainer>
                 <NavList className={navBar ? "nav-active" : null}>
                     <li><a href="/">Home</a></li>
-                    <li><a href="/">Properties</a></li>
+                    <li><a href="/properties">Properties</a></li>
                     <li><a href="/">Location</a></li>
                     <li><a href="/">Contact Us</a></li>
                     <li><StyledLink href="/">Book a Viewing</StyledLink></li>

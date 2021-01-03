@@ -255,6 +255,12 @@ const RowTwo = styled(Container)`
                     &:hover{
                         color: #E3C77C;
                     }
+                    span{
+                        margin-right: 5px;
+                    }
+                    .fa-mobile{
+                            margin-right: 10px;
+                        }
                 }
             }
         }
@@ -311,8 +317,8 @@ const Footer = () => {
                 <div className="container">
                     <h2>get in touch</h2>
                     <ul>
-                            <a href="/"><li>info.presello@gmail.com</li></a>
-                            <a href="/"><li>0966 256 9937</li></a>
+                            <a href="/"><li><span className="fas fa-envelope-open"></span> info.presello@gmail.com</li></a>
+                            <a href="/"><li><span className="fas fa-mobile"></span> 0966 256 9937</li></a>
                     </ul>
                 </div>
             </RowTwo>
