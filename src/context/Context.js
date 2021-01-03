@@ -5,6 +5,8 @@ export const Context = createContext()
 
 export const ContextProvider = (props) => {
     const [houses, setHouses] = useState(null)
+    const [clicked, setClicked] = useState(false)
+    const [location, setLocation] = useState(null)
 
     useEffect(()=> {
         const fetchData = async () => {
@@ -24,19 +26,23 @@ export const ContextProvider = (props) => {
                 slug,
                 title,
                 thumb,
-                location{
-                _ref
-              }
+                location
               }`)
               setHouses(data)
         }
+        const fetchLocation = async () => {
+            const data = await sanityClient
+            .fetch(`*[_type=="location"]`)
+            setLocation(data)
+        }
         fetchData()
+        fetchLocation()
     },[])
 
 
     return(
 
-        <Context.Provider value={[houses, ]}>
+        <Context.Provider value={[houses, setHouses, clicked, setClicked, location, setLocation]}>
             {props.children}
         </Context.Provider>
     )

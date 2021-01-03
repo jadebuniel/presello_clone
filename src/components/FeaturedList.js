@@ -22,12 +22,11 @@ const Header = styled.h1`
 `
 
 const FeaturedList = () => {
-    const [data, ] = useContext(Context)
+    const [data, , , ,] = useContext(Context)
     const [houses, setHouses] = useState(null)
     useEffect(() => {
-        setHouses(data && data.filter(da => da.featured == true))
+        setHouses(data && data.filter(da => da.featured === true))
     }, [data])
-    console.log(data)
     return (
         <>
         <Header>featured properties</Header>

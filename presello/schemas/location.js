@@ -17,5 +17,20 @@ export default {
                 maxLength: 96,
             },
         },
+        {
+            name: 'thumb',
+            title: 'Thumbnail',
+            type: 'image',
+        },
+        {
+            name: 'description',
+            title: 'Description',
+            type: 'string',
+        },
+        {
+            name: "popular",
+            title: "popular",
+            type: "boolean"
+        }
     ]
 }

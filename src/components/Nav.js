@@ -91,7 +91,12 @@ const NavList = styled.ul`
     }
     @media screen and (max-width: 500px){
         width: 100%;
-        overflow: scroll;
+    }
+
+    @media screen and (max-height: 600px){
+        overflow-y: scroll;
+        height: 100vh;
+        padding-bottom: 8rem;
     }
 `
 const Hamburger = styled.div`
@@ -160,6 +165,7 @@ const Nav = () => {
     const navRef = useRef()
 
 
+
     document.addEventListener("DOMContentLoaded", () => {
         setNavBar(window.innerWidth >= 768 && false)
     })
@@ -172,7 +178,7 @@ const Nav = () => {
     })
     document.addEventListener('scroll', () => {
         if (navCon.current) {
-            if (window.pageYOffset >= 300){
+            if (window.pageYOffset >= 200){
                 navCon.current.classList.add("nav-scrolled")
                 navRef.current.classList.add('nav-outer-scrolled')
             } else {
@@ -181,11 +187,11 @@ const Nav = () => {
             }
         }
     })
-
-
+    const pathName = window.location.pathname === '/' ? null : window.location.pathname
     return (
 
-        <Navbar ref={navRef} style={{backgroundColor: navBar ? `black` : null}}>
+        // <Navbar ref={navRef} style={{backgroundColor: navBar ? window.location.pathname && `black` : null}}>
+        <Navbar ref={navRef} style={{backgroundColor: pathName ? `black` : navBar ? `black` : null}}>
             <NavContainer ref={navCon}>
                 <LogoContainer>
                     <img src={logo} alt=""/>
