@@ -7,6 +7,7 @@ import {Container} from "../components/GlobalStyled"
 import styled from 'styled-components'
 import {AnimateSharedLayout, AnimatePresence} from "framer-motion"
 import VideoExp from './VideoExp'
+import {Link} from "react-router-dom"
 
 // STYLES
 
@@ -29,10 +30,14 @@ const List = styled(Container)`
 const Filter = styled(Container)`
     display: flex;
     padding: 0 1rem;
+    gap: 5px;
+    @media screen and (max-width: 1207px){
+        justify-content: center;
+    }
     select{
         border: 1px solid rgba(150,150,150, 0.5);
         outline: none;
-        padding: 0.5rem;
+        padding: .75rem 1rem;
         font-size: 1rem;
         margin-top: 4rem;
         option{
@@ -40,8 +45,44 @@ const Filter = styled(Container)`
         }
     }
 `
+const StyledPagination = styled(Container)`
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    margin-top: 4rem;
+    .results{
+        span{
+            font-weight: 600;
+        }
+    }
+    .pages{
+        span{
+            background-color: white;
+            border: 1px solid #888;
+            padding: 3px 8px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 5px;
+            cursor: pointer;
+            &:hover{
+                border-color: #333;
+                background-color: #f5f5f5;
+            }
+            }
+            .active{
+                background-color: #E3C77C;
+                border-color: #E3C77C;
 
-const Properties = () => {
+                &:hover{
+                    background-color: #E3C77C;
+                    border-color: #E3C77C;
+                }
+    }
+        }
+`
+
+
+const Properties = ({match}) => {
     const [ , , clicked, ] = useContext(Context)
     document.querySelector('body').style.overflowY = clicked ? "hidden" : "unset"
 
@@ -49,6 +90,14 @@ const Properties = () => {
     const [sort, setSort] = useState('price')
     const [order, setOrder] = useState('high')
     const [houses, setHouses] = useState(null)
+    const [pagination, setPagination] = useState(null)
+
+    const spanRef = useRef(null)
+
+    const itemsToDisplay = 6
+
+    const pages0 = data && Array.from(Array(Math.ceil(data.length / itemsToDisplay)).keys())
+    const pages = pages0 && pages0.map(page => page + 1)
 
 
     useEffect(() => {
@@ -57,8 +106,15 @@ const Properties = () => {
                 const sorted = -1
                 return sorted * a.price.split(' - ')[0].localeCompare(b.price.split(' - ')[0])
             }))
+
         }
-    }, [data])
+        if (houses){
+            const content =  houses
+            setPagination(content.slice(((parseInt(match.params.page) - 1) * itemsToDisplay), ((match.params.page - 1) *(itemsToDisplay - 1)) + itemsToDisplay))
+        }
+    }, [data, match.params.page, houses])
+    // console.log(pagination) 
+    // console.log(data)
 
     const handleOrder = (e) => {
         setOrder(e.target.value)
@@ -123,7 +179,8 @@ const Properties = () => {
                         })) 
                     }
                     break;
-
+                    default:
+                        return
             }
         }
     const handleSort = (e) => {
@@ -192,13 +249,12 @@ const Properties = () => {
                 break;
                 default:
                     return
-                    break;
 
         }
     }
 
     
-        console.log(data)
+        // console.log(data)
         // console.log(sort, order)
     return (
         <Layout>
@@ -217,10 +273,28 @@ const Properties = () => {
 
             </Filter>
             <List>
-            {houses && houses.map((house, index) => (
+            {pagination && pagination.map((house, index) => (
                 <Card house={house} key={index} />
             ))}
             </List>
+
+
+
+
+            <StyledPagination>
+                <p className="results"><span>{data ? data.length : 'No'}</span> Properties found.</p>
+                <div className="pages">
+                    {pages && pages.map((page, index) => (
+                        <Link to={`/properties/${page}`} key={index}><span className={match.params.page == page ? "active" : null}>{page}</span></Link>
+                    ))}
+                </div>
+            </StyledPagination>
+
+
+
+
+
+
             <AnimateSharedLayout >
             <Video/>
             <AnimatePresence>

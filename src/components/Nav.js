@@ -2,6 +2,7 @@ import React, {useRef, useState} from 'react'
 import {Outer, Container} from './GlobalStyled'
 import styled from "styled-components"
 import logo from '../images/logo.png'
+import {Link} from 'react-router-dom'
 
 const Navbar = styled(Outer)`
     background-color: transparent;
@@ -203,8 +204,8 @@ const Nav = () => {
                     </Hamburger>
                 </LogoContainer>
                 <NavList className={navBar ? "nav-active" : null}>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/properties">Properties</a></li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/properties/1">Properties</Link></li>
                     <li><a href="/">Location</a></li>
                     <li><a href="/">Contact Us</a></li>
                     <li><StyledLink href="/">Book a Viewing</StyledLink></li>

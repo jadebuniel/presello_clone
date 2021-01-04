@@ -48,7 +48,7 @@ const CardDetails = styled.div`
         }
         .title{
             font-weight: 500;
-            font-size: 1.15rem;
+            font-size: 1rem;
             margin-top: .5rem;
             cursor: pointer;
             &:hover{
@@ -70,6 +70,7 @@ const CardDetails = styled.div`
             align-items: center;
             justify-content: space-between;
             margin-top: 1.8rem;
+            margin-bottom: 1.8rem;
             p{
                 text-transform: uppercase;
                 font-weight: 600;

@@ -10,7 +10,7 @@ function App() {
       <ContextProvider>
       <Switch>
         <Route path='/' exact component={Home} />
-        <Route path='/properties' component={Properties} />
+        <Route path='/properties/:page' component={Properties} />
       </Switch>
       </ContextProvider>
     </div>
