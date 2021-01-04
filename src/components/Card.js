@@ -9,7 +9,7 @@ const StyledCard = styled.div`
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0,0,0, 0.15);
-    margin: 0 auto;
+    /* margin: 0 auto; */
     position: relative;
     img{
         width: 100%;

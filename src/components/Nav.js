@@ -206,7 +206,7 @@ const Nav = () => {
                 <NavList className={navBar ? "nav-active" : null}>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/properties/1">Properties</Link></li>
-                    <li><a href="/">Location</a></li>
+                    <li><a href="/">Locations</a></li>
                     <li><a href="/">Contact Us</a></li>
                     <li><StyledLink href="/">Book a Viewing</StyledLink></li>
                 </NavList>

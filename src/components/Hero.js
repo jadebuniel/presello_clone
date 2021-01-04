@@ -7,6 +7,8 @@ const StyledHero = styled(Outer)`
     height: 100vh;
     width: 100%;
     background-image: url(${heroImage});
+    background-repeat: no-repeat;
+    background-size: cover;
     /* position: relative; */
 `
 const Overlay = styled.div`

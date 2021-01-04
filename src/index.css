@@ -47,4 +47,8 @@ body{
   width: 180px !important;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 
