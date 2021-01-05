@@ -6,10 +6,15 @@ import styled from "styled-components"
 
 const Featured = styled(Container)`
     display: grid;
+    /* grid-template-columns: repeat(auto-fit, minmax(365px, 1fr)); */
     grid-template-columns: repeat(auto-fit, minmax(365px, 1fr));
     margin-top: 2rem;
     gap: 2rem;
     padding: 0 1rem;
+    
+    @media screen and (max-width: 420px){
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
 
 `
 const Header = styled.h1`
@@ -19,6 +24,9 @@ const Header = styled.h1`
     text-align: center;
     margin-top: 8rem;
     letter-spacing: 3px;
+    @media screen and (max-width: 420px){
+        font-size: clamp(0.8rem, 5vw, 1.5rem);
+    }
 `
 
 const FeaturedList = () => {

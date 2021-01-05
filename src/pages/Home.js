@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import FeaturedList from '../components/FeaturedList'
 import Hero from '../components/Hero'
 import Layout from '../components/Layout'
@@ -14,6 +14,11 @@ import WhatClientsAreSaying from '../components/WhatClientsAreSaying'
 const Home = () => {
     const [ , , clicked, ] = useContext(Context)
     document.querySelector('body').style.overflowY = clicked ? "hidden" : "unset"
+
+    useEffect(() => {
+        window.scrollTo(0,0)
+    }, [])
+
     return (
         <Layout>
             <Hero/>

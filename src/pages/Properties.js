@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import FilteredList from '../components/FilteredList'
 
 const Header = styled.h1`
-    padding-top: 16rem;
+    padding-top: 12rem;
     text-align: center;
     text-transform: uppercase;
     font-size: 1.8rem;

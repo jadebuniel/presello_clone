@@ -15,6 +15,9 @@ const List = styled(Container)`
     gap: 2rem;
     padding: 0 1rem; 
     margin-top: 2rem;
+    @media screen and (max-width: 420px){
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
 
 `
 const Filter = styled(Container)`

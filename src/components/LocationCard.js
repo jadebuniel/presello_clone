@@ -8,6 +8,10 @@ const Card = styled.div`
     border: 1px solid rgba(200, 200, 200, 0.4);
     margin: 0 auto;
 
+    @media screen and (max-width: 420px){
+        width: clamp(250px, 85vw, 375px);
+    }
+
     img{
         width: 100%;
         height: 45%;
@@ -22,6 +26,9 @@ const Card = styled.div`
             font-weight: 500;
             text-align: center;
             letter-spacing: 2px;
+            @media screen and (max-width: 420px){
+                font-size: clamp(1rem, 5vw, 1.25rem);
+            }
         }
         .desc{
             margin-top: 1rem;
@@ -29,6 +36,10 @@ const Card = styled.div`
             font-size: 15px;
             color: #333;
             line-height: 1.7rem;
+            @media screen and (max-width: 420px){
+                font-size: clamp(0.8rem, 3vw, 1rem);
+                line-height: 1.5;
+            }
         }
         button{
             display: block;

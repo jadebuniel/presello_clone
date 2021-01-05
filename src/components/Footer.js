@@ -275,7 +275,7 @@ const Footer = () => {
                     <h2 className="header">JOIN OUR NEWSLETTER</h2>
                     <p className="desc">Get the latest listings, news, and promotions once a week on your inbox.</p>
                     <form className="form" onSubmit={(e)=> e.preventDefault()}>
-                        <input type="text" className="input-text" placeholder="Your email address"/>
+                        <input type="email" className="input-text" placeholder="Your email address"/>
                         <button className="button-submit" type="submit">subscribe</button>
                     </form>
                 </div>

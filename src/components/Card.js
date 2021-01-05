@@ -2,15 +2,25 @@ import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import sanityClient from '../client'
 import imageUrlBuilder from "@sanity/image-url"
+import {Link} from 'react-router-dom'
 
 const StyledCard = styled.div`
-    width: 365px;
+    width: clamp(375px, 30vw, 400px);
     height: 475px;
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0,0,0, 0.15);
     /* margin: 0 auto; */
     position: relative;
+    color: black;
+
+    @media screen and (max-width: 1207px){
+        margin: 0 auto;
+    }
+    @media screen and (max-width: 420px){
+        width: clamp(250px, 85vw, 375px);
+        height: 550px;
+    }
     img{
         width: 100%;
         height: 45%;
@@ -40,6 +50,9 @@ const CardDetails = styled.div`
         .price{
             font-weight: 600;
             font-size: 1.6rem;
+            @media screen and (max-width: 420px){
+                font-size: clamp(1.2rem, 6.5vw, 1.6rem);
+            }
             span{
                 font-size: 1rem;
                 margin-right: 0.25rem;
@@ -54,11 +67,17 @@ const CardDetails = styled.div`
             &:hover{
                     color: #E3C77C;
                 }
+            @media screen and (max-width: 420px){
+                font-size: clamp(0.8rem, 3.8vw, 1rem);
+            }
         }
         .rooms{
             display: flex;
             gap: 5rem;
             margin-top: .5rem;
+            @media screen and (max-width: 420px){
+                gap: clamp(2rem, 10vw, 5rem);
+            }
         }
         .status{
             margin-top: 0.5rem;
@@ -95,7 +114,6 @@ const builder = imageUrlBuilder(sanityClient)
 
 const Card = ({house}) => {
     const [location, setLocation] = useState()
-
     const urlFor = (source) => {
         return builder.image(source)
     }
@@ -110,6 +128,10 @@ const Card = ({house}) => {
         fetchLocation()
     }, [house.location._ref])
     return (
+        <Link to={{
+            pathname: `/property/${house.slug.current}`,
+            state: house
+        }}>
         <StyledCard>
             <img src={urlFor(house.thumb.asset._ref)} alt=""/>
             <CardDetails>
@@ -127,6 +149,7 @@ const Card = ({house}) => {
             </CardDetails>
             <p className="location"><span className="fas fa-map-marker-alt"></span> {location}</p>
         </StyledCard>
+        </Link>
     )
 }
 

@@ -34,12 +34,18 @@ const VideoStyled = styled(Container)`
             font-size: 1.4rem;
             letter-spacing: 2px;
             font-weight: 500;
+            @media screen and (max-width: 420px){
+                font-size: clamp(1rem, 5vw, 1.4rem);
+            }
         }
         .third{
             color: white;
             margin-top: 1rem;
             font-size: 14px;
             font-weight: 300;
+            @media screen and (max-width: 420px){
+                font-size: clamp(12px, 4vw, 14px);
+            }
         }
         .btn-group{
             display: flex;

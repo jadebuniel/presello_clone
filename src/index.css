@@ -51,4 +51,6 @@ html{
   scroll-behavior: smooth;
 }
 
-
+.nav-link-active{
+  color: #E3C77C !important;
+}
