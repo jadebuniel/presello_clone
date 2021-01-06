@@ -326,6 +326,7 @@ const ItemPage = ({match, location}) => {
     const urlFor = (source) => {
         return builder.image(source)
     }
+    document.title = location.state && `${location.state.title} | Presello`
 
     return (
         <Layout>

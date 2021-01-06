@@ -26,7 +26,7 @@ const Properties = ({match}) => {
         window.scrollTo(0,0)
     }, [match.params.page])
 
-
+    document.title = 'Properties | Presello'
     return (
         <Layout>
             <Header>property search</Header>

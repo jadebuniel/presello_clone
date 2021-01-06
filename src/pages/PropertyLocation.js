@@ -39,6 +39,8 @@ const PropertyLocation = ({match, location}) => {
         setHouses(data && data.filter(da => state && state._id === da.location._ref))
     }, [state, data])
 
+    document.title = `Properties for sale in ${state && state.location} | Presello`
+
     return (
         <Layout>
             <StyledPropertyLocation>
