@@ -47,10 +47,13 @@ body{
   width: 180px !important;
 }
 
-html{
+/* html{
   scroll-behavior: smooth;
-}
+} */
 
 .nav-link-active{
   color: #E3C77C !important;
+}
+.control-arrow{
+  opacity: 1 !important;
 }

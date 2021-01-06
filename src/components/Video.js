@@ -129,7 +129,7 @@ const Video = () => {
                 </div>
             </div>
 
-            <motion.div className="preview" layoutId="video" initial={false} onClick={() => setClicked(!clicked)}>
+            <motion.div className="preview" layoutId="video" onClick={() => setClicked(!clicked)}>
                 <img src={image} alt="" className="preview-img"/>
                 <div className="overlay">
                     <img src={play} alt=""/>

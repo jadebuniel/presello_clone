@@ -3,6 +3,7 @@ import styled from "styled-components"
 import LocationCard from './LocationCard'
 import handshake from "../images/handshake.png"
 import key from "../images/key.png"
+import {useHistory} from 'react-router-dom'
 
 const data = [
     {
@@ -61,6 +62,7 @@ const HeaderText = styled.div`
 `
 
 const HowCanWeHelp = () => {
+    const history = useHistory()
     return (
         <>
         <HeaderText>
@@ -69,7 +71,7 @@ const HowCanWeHelp = () => {
         </HeaderText>
         <StyledHowCanWeHelp>
             {data.map((da, index) => (
-                <LocationCard key={index} image={da.image} header={da.header} desc={da.desc} button={da.button} style={styles} reset={resetMargin} />
+                <LocationCard key={index} image={da.image} header={da.header} desc={da.desc} button={da.button} style={styles} reset={resetMargin} onClick={() => history.push('/properties/1')}/>
             ))}
 
         </StyledHowCanWeHelp>

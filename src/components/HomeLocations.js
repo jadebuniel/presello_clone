@@ -30,6 +30,9 @@ const Header = styled.h1`
 const HomeLocations = () => {
     const [, , , , data, ] = useContext(Context)
     const [popularLoc, setPopularLoc] = useState(null)
+    useEffect(() => {
+        window.scrollTo(0,0)
+    }, [])
 
     useEffect(() => {
         if (data){
@@ -41,7 +44,7 @@ const HomeLocations = () => {
         <Header>popular property locations</Header>
         <StyledLocation>
             {popularLoc && popularLoc.map((loc, index) => (
-                <LocationCard key={index} data={loc}/>
+                <LocationCard key={index} data={loc} notLocation={true}/>
             ))}
         </StyledLocation>
         </>

@@ -195,7 +195,7 @@ const Nav = () => {
         <Navbar ref={navRef} style={{backgroundColor: pathName ? `black` : navBar ? `black` : null}}>
             <NavContainer ref={navCon}>
                 <LogoContainer>
-                    <img src={logo} alt=""/>
+                    <a href="/"><img src={logo} alt=""/></a>
                     <Hamburger onClick={() => setNavBar(!navBar)} className={navBar ? "hamburger-active" : null}>
                         <span></span>
                         <span></span>
@@ -206,7 +206,7 @@ const Nav = () => {
                 <NavList className={navBar ? "nav-active" : null}>
                     <li><NavLink to="/" exact activeClassName="nav-link-active">Home</NavLink></li>
                     <li><NavLink to="/properties/1" activeClassName="nav-link-active">Properties</NavLink></li>
-                    <li><a href="/">Locations</a></li>
+                    <li><NavLink to="/locations/" activeClassName="nav-link-active">Locations</NavLink></li>
                     <li><a href="/">Contact Us</a></li>
                     <li><StyledLink href="/">Book a Viewing</StyledLink></li>
                 </NavList>

@@ -2,11 +2,14 @@ import React from 'react'
 import styled from "styled-components"
 import imageUrlBuilder from "@sanity/image-url"
 import sanityClient from "../client"
+import {useHistory} from 'react-router-dom'
 
 const Card = styled.div`
     width: 380px;
     border: 1px solid rgba(200, 200, 200, 0.4);
     margin: 0 auto;
+    color: black;
+    cursor: pointer;
 
     @media screen and (max-width: 420px){
         width: clamp(250px, 85vw, 375px);
@@ -53,6 +56,7 @@ const Card = styled.div`
             border: 2px solid black;
             letter-spacing: 2px;
             margin-bottom: 2rem;
+            cursor: pointer;
 
             &:hover{
                 background-color: #E3C77C;
@@ -69,17 +73,31 @@ const Card = styled.div`
 const builder = imageUrlBuilder(sanityClient)
 
 
-const LocationCard = ({data, image, header, desc, button, style, reset}) => {
+const LocationCard = ({data, image, header, desc, button, style, reset, notLocation}) => {
+
+    const history = useHistory()
+
     const urlFor = (source) => {
         return builder.image(source)
     }
+    // console.log(data)
+    const handleClickLocation = () => {
+        history.push(`/property-location/${data.slug.current}/1`, [data])
+        console.log(`location`)
+    }
+    const handleClickNotLocation = () => {
+        history.push('/properties/1')
+        console.log(`not location`)
+    }
     return (
-        <Card style={reset}>
+        
+        <Card style={reset} onClick={() => notLocation ? handleClickLocation() : handleClickNotLocation()}>
             <img src={image || urlFor(data.thumb.asset._ref)} alt="" style={style}/>
             <div className="text">
                 
                 <p className="location">{header || data.location}</p>
                 <p className="desc">{desc || data.description}</p>
+
                 <button>{button || "view listings here"}</button>
             </div>
         </Card>

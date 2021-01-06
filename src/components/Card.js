@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import sanityClient from '../client'
 import imageUrlBuilder from "@sanity/image-url"
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 
 const StyledCard = styled.div`
     width: clamp(375px, 30vw, 400px);
@@ -13,6 +13,9 @@ const StyledCard = styled.div`
     /* margin: 0 auto; */
     position: relative;
     color: black;
+    &:hover{
+        box-shadow: 0 0 20px rgba(37, 37, 37, 0.4);
+    }
 
     @media screen and (max-width: 1207px){
         margin: 0 auto;
@@ -113,7 +116,13 @@ const CardDetails = styled.div`
 const builder = imageUrlBuilder(sanityClient)
 
 const Card = ({house}) => {
+
+    const history = useHistory()
+
     const [location, setLocation] = useState()
+    const [info, setInfo] = useState()
+
+
     const urlFor = (source) => {
         return builder.image(source)
     }
@@ -123,15 +132,25 @@ const Card = ({house}) => {
             const data = await sanityClient
             .fetch(`*[_type=="location" && _id=="${house.location._ref}"]`)
             setLocation(data[0].location)
+            setInfo(data)
 
         }
         fetchLocation()
     }, [house.location._ref])
+    
+    const handleOnClick = (e) => {
+        if (e.target.className.includes("location")){
+            e.preventDefault()
+            history.push(`/property-location/${info[0].slug.current}/1`, [info[0]])
+        }
+    }
     return (
         <Link to={{
             pathname: `/property/${house.slug.current}`,
             state: house
-        }}>
+        }}
+        onClick={(e) => handleOnClick(e)}
+        >
         <StyledCard>
             <img src={urlFor(house.thumb.asset._ref)} alt=""/>
             <CardDetails>

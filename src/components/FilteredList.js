@@ -24,15 +24,21 @@ const Filter = styled(Container)`
     display: flex;
     padding: 0 1rem;
     gap: 5px;
+    margin-top: 4rem;
     @media screen and (max-width: 1207px){
         justify-content: center;
+    }
+    @media screen and (max-width: 375px){
+        flex-direction: column;
     }
     select{
         border: 1px solid rgba(150,150,150, 0.5);
         outline: none;
         padding: .75rem 1rem;
         font-size: 1rem;
-        margin-top: 4rem;
+        @media screen and (max-width: 375px){
+            margin-top: 0;
+        }
         option{
             padding: 0.5rem;
         }
@@ -75,13 +81,14 @@ const StyledPagination = styled(Container)`
 `
 
 const FilteredList = ({match, data}) => {
+    // console.log(match)
 
     const [sort, setSort] = useState('price')
     const [order, setOrder] = useState('high')
     const [houses, setHouses] = useState(null)
     const [pagination, setPagination] = useState(null)
 
-    const itemsToDisplay = 9
+    const itemsToDisplay = 6
 
     const pages0 = data && Array.from(Array(Math.ceil(data.length / itemsToDisplay)).keys())
     const pages = pages0 && pages0.map(page => page + 1)
@@ -325,7 +332,8 @@ const FilteredList = ({match, data}) => {
                 <p className="results"><span>{data ? data.length : 'No'}</span> Properties found.</p>
                 <div className="pages">
                     {pages && pages.map((page, index) => (
-                        <Link to={`/properties/${page}`} key={index}><span className={match.params.page == page ? "active" : null}>{page}</span></Link>
+                        <Link to={match.url.split(match.params.page).join(page)} key={index}><span className={match.params.page == page ? "active" : null}>{page}</span></Link>
+                        // <Link to={`/properties/${page}`} key={index}><span className={match.params.page == page ? "active" : null}>{page}</span></Link>
                     ))}
                 </div>
             </StyledPagination>

@@ -31,7 +31,7 @@ const Properties = ({match}) => {
         <Layout>
             <Header>property search</Header>
             <FilteredList match={match} data={data}/>
-            <AnimateSharedLayout >
+        <AnimateSharedLayout >
             <Video/>
             <AnimatePresence>
                 {clicked && <VideoExp/>}
